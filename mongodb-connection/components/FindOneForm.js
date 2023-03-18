@@ -16,7 +16,7 @@ function FindOneForm({ database, collection }) {
         });
 
         const result = await json_response.json();
-        setResult(JSON.stringify(result));
+        setResult(result);
     }
 
     return (
@@ -51,18 +51,20 @@ function FindOneForm({ database, collection }) {
                     if (collection === "movies") {
                         return (
                             <div className={styles.moviesResult}>
-                                <img src={JSON.parse(result).poster} alt="Movie poster" />
-                                <div>{JSON.parse(result).title}</div>
+                                <img src={result.poster} alt="Movie poster" />
+                                <div>{result.title}</div>
                             </div>
                         );
                     } else if (collection === "ListingsAndReviews") {
                         return (
                             <div>
-                                {result}
+                                {JSON.stringify(result)}
                             </div>
                         );
                     } else if (collection === "shipwrecks") {
-                        return <div className={styles.description}>{result}</div>;
+                        return <div>{JSON.stringify(result)}</div>;
+                    } else {
+                        return <div>{JSON.stringify(result)}</div>
                     }
                 })()}</div>
             </div>

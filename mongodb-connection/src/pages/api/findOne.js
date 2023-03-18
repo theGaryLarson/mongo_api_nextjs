@@ -1,4 +1,3 @@
-// pages/api/findOne.js
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 dotenv.config();
