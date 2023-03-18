@@ -1,4 +1,3 @@
-// lib/mongodb.js
 import { MongoClient } from "mongodb";
 
 const db_username = process.env.MONGO_DB_USERNAME;

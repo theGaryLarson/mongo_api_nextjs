@@ -1,4 +1,3 @@
-// pages/index.js
 import FindOneForm from "../../components/FindOneForm";
 import styles from "../styles/Home.module.css"
 export default function Home() {
