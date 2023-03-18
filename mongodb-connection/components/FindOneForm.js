@@ -23,23 +23,29 @@ function FindOneForm({ database, collection }) {
         <>
             <div>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className={styles.inputWrapper}>
                         <label htmlFor="filter-input">Filter:</label>
                         <input
                             type="text"
                             id="filter-input"
                             name="filter"
-                            placeholder="e.g. { property_type: 'Apartment', bedrooms: 2, beds: 2 }"
+                            placeholder={collection === "movies" ? '{ "plot":"", "runtime":"", "rated":"", "poster":"", "title":"", "fullplot":"", "released":""}' :
+                                collection === "listingsAndReviews" ? '{"listing_url":"", "name":"", "summary":"","room_type":"", "accommodates":"", "bedrooms":"", "beds":""}' :
+                                    collection === "shipwrecks" ? '{"feature_type":"", "chart":"", "latdec":"", "londec":"", ':
+                                        "Enter filter here"}
                             required
                         />
                     </div>
-                    <div>
+                    <div className={styles.inputWrapper}>
                         <label htmlFor="projection-input">Projection:</label>
                         <input
                             type="text"
                             id="projection-input"
                             name="projection"
-                            placeholder="e.g. { id: 1, listing_url: 1, name: 1, summary: 1, property_type: 1, bedrooms: 1, beds: 1 }"
+                            placeholder={collection === "movies" ? "Enter movie projection here" :
+                                collection === "listingsAndReviews" ? "Enter listing projection here" :
+                                    collection === "shipwrecks" ? "Enter shipwreck projection here" :
+                                        "Enter projection here"}
                             required
                         />
                     </div>
@@ -49,10 +55,15 @@ function FindOneForm({ database, collection }) {
                 </form>
                 <div>{(() => {
                     if (collection === "movies") {
+                        if (result.poster)
                         return (
                             <div className={styles.moviesResult}>
                                 <img src={result.poster} alt="Movie poster" />
-                                <div>{result.title}</div>
+                                <div>
+                                    {result.title}
+                                    <p>{result.fullplot}</p>
+
+                                </div>
                             </div>
                         );
                     } else if (collection === "ListingsAndReviews") {

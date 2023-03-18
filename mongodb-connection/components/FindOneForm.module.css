@@ -1,15 +1,21 @@
 .inputWrapper {
     text-align: left;
+
     margin-bottom: 10px;
-    min-width: 30%;
+    min-width: 50%;
 }
 
 .inputWrapper input {
-    min-width: 200px;
+    min-width: 50%;
+    width: 100%;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
+.inputWrapper button {
+    width: 100%;
+    text-align:center;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -23,6 +29,18 @@
 .moviesResult img {
     max-width: 200px; /* Adjust as needed */
     margin-right: 20px;
+}
+
+.moviesResult > div:first-of-type {
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+
+
+}
+
+.moviesResult > div p {
+    text-align:center;
 }
 
 .description {
